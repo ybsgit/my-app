@@ -7,4 +7,10 @@ node{
   {
     sh 'mvn package'
   }
+ stage('SonarQube Analysis')
+ {
+  withSonarQubeEnv('sonar-vprofile') {
+    mvn sonar:sonar
+}
+ }
 }
