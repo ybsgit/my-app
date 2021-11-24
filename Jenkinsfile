@@ -21,4 +21,11 @@ node{
               }
           }
       }   
+ 
+ stage('Deploy to tomcat')
+ {
+  sshagent(['tomcat-new']) {
+    sh 'scp -o StrictHostKeyChecking=no scp target/*.war root@10.182.0.36:/var/lib/tomcat9/webapps/'
+}
+ }
 }
